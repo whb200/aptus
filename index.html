@@ -7,14 +7,14 @@
 <meta name="description" content="Aptus Research studies labor dynamism — the pace at which workers and organizations find each other — and what a slow-clearing market means for companies, their leaders, and the people who power them.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#EDEFEC;
-    --ink:#1F2424;
-    --faded:#6B7472;
-    --hairline:#D4D8D2;
-    --accent:#1D4E66;
+    --paper:#F6F6F4;
+    --ink:#15171A;
+    --faded:#6E7378;
+    --hairline:#DCDDD9;
+    --accent:#B4391F;
     --dot:#9AA39F;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -22,12 +22,13 @@
   body{
     background:var(--paper);
     color:var(--ink);
-    font-family:'STIX Two Text',Georgia,serif;
-    font-size:18px;
-    line-height:1.65;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+    font-size:17px;
+    line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    font-feature-settings:"ss01","cv11";
   }
-  .mono{font-family:'IBM Plex Mono',monospace;}
+  .mono{font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;}
 
   .frame{
     max-width:680px;
@@ -43,16 +44,17 @@
     padding:28px 0 0;
   }
   .wordmark{
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:13px;
-    font-weight:500;
-    letter-spacing:0.22em;
+    font-weight:600;
+    letter-spacing:0.18em;
     color:var(--ink);
   }
   .est{
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:11px;
-    letter-spacing:0.14em;
+    font-weight:500;
+    letter-spacing:0.12em;
     color:var(--faded);
   }
 
@@ -66,9 +68,10 @@
     height:190px;
   }
   figcaption{
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:11.5px;
-    letter-spacing:0.06em;
+    font-weight:500;
+    letter-spacing:0.04em;
     color:var(--faded);
     margin-top:10px;
   }
@@ -76,17 +79,18 @@
   /* ---- hero ---- */
   .hero{margin-top:64px;}
   h1{
-    font-size:clamp(34px,6vw,46px);
-    font-weight:500;
-    line-height:1.18;
-    letter-spacing:-0.012em;
-    max-width:16ch;
+    font-size:clamp(32px,5.4vw,44px);
+    font-weight:600;
+    line-height:1.12;
+    letter-spacing:-0.022em;
+    max-width:18ch;
   }
   .hero p{
-    margin-top:26px;
-    font-size:20px;
-    line-height:1.6;
+    margin-top:24px;
+    font-size:18px;
+    line-height:1.55;
     max-width:54ch;
+    color:#2A2D31;
   }
   .hero p em{font-style:italic;}
 
@@ -98,10 +102,10 @@
   }
   section{padding-top:48px;}
   .eyebrow{
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:11.5px;
-    font-weight:500;
-    letter-spacing:0.2em;
+    font-weight:600;
+    letter-spacing:0.16em;
     color:var(--accent);
     text-transform:uppercase;
     display:block;
@@ -112,13 +116,14 @@
 
   /* ---- correspondence ---- */
   a.contact{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:15px;
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:14.5px;
+    font-weight:500;
     color:var(--accent);
     text-decoration:none;
     border-bottom:1px solid var(--accent);
   }
-  a.contact:hover{opacity:.75;}
+  a.contact:hover{opacity:.7;}
   a:focus-visible{
     outline:2px solid var(--accent);
     outline-offset:2px;
@@ -139,8 +144,9 @@
   footer a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;}
   footer a:hover{border-bottom-color:var(--accent);}
   .legal{
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:11px;
+    font-weight:500;
     letter-spacing:0.1em;
     margin-top:28px;
   }
@@ -201,7 +207,6 @@
   </main>
 
   <footer>
-    <p>Aptus Research is an independent research practice founded by William Barclay — formerly of Netflix, Chewy, and Major, Lindsey&nbsp;&amp;&nbsp;Africa.</p>
     <p class="legal">© 2026 APTUS RESEARCH</p>
   </footer>
 
