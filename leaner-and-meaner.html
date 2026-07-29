@@ -1,0 +1,937 @@
+<!doctype html>
+<!--
+  EDITING GUIDE
+  -------------
+  1. Open this file in a plain-text or code editor (VS Code, Sublime Text,
+     TextEdit in plain-text mode, etc.).
+  2. Search for: EDITABLE PROSE
+     Those comments surround the main visible narrative sections.
+  3. Search for: EDITABLE ARCHETYPES
+     In the JSON data, edit each cluster's "name", "tradeoff", and "question".
+  4. Search for: EDITABLE COMPANY NOTES
+     In the JSON data, edit each company's "note" for the interactive panel.
+  5. Save with the .html extension, then open or refresh the file in a browser.
+
+  Avoid changing element IDs (for example stat-ta, bars, scatter, panel) unless
+  you also intend to update the JavaScript that uses them.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leaner… and Meaner? — Aptus</title>
+<meta name="description" content="How fourteen of the most important companies in the world changed recruiting—and redefined healthy growth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f0e7;
+  --paper-2:#ebe5d9;
+  --ink:#111514;
+  --muted:#626763;
+  --line:#cfc8ba;
+  --white:#fffdf8;
+  --blue:#2563eb;
+  --blue-soft:#dce7ff;
+  --orange:#f05a38;
+  --green:#26705e;
+  --ta-bar:#4f3d63;
+  --workforce-bar:#d1a23f;
+  --workforce-ink:#80601b;
+  --max:1180px;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --serif:'Newsreader',Georgia,serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.wrap{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+.kicker,.eyebrow,.tiny,.axis-note,.legend,.meta,.table-kicker{font-family:var(--mono)}
+
+.hero{background:var(--ink);color:var(--white);overflow:hidden;position:relative}
+.hero:after{content:"";position:absolute;width:540px;height:540px;border:1px solid rgba(255,255,255,.14);border-radius:50%;right:-155px;top:-170px;box-shadow:0 0 0 90px rgba(255,255,255,.025),0 0 0 180px rgba(255,255,255,.02)}
+.hero-inner{position:relative;z-index:1;min-height:680px;padding:76px 0 54px;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.65fr);gap:70px;align-items:end}
+.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#bfc5c2;margin-bottom:26px}
+.hero h1{font-family:var(--serif);font-size:clamp(64px,9.2vw,122px);font-weight:500;line-height:.82;letter-spacing:-.062em;margin:0;max-width:9.4ch}
+.hero h1 em{display:block;color:#b7a9ff;font-weight:400}
+.hero-dek{font-family:var(--serif);font-size:clamp(21px,2.6vw,32px);line-height:1.16;max-width:33ch;margin:38px 0 0;color:#e6e6df}
+.hero-rail{border-top:1px solid rgba(255,255,255,.35);padding-top:18px;align-self:end}
+.hero-rail .thesis{font-family:var(--serif);font-size:25px;line-height:1.18;margin:0 0 35px}
+.hero-rail .thesis strong{color:#b7a9ff;font-weight:500}
+
+.story-section{padding:96px 0;border-bottom:1px solid var(--line)}
+
+.section-signal{--signal:var(--orange);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:34px;align-items:end;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:18px 0 20px;margin:-10px 0 42px}
+.section-signal.signal-ta{--signal:var(--ta-bar)}
+.section-signal.signal-workforce{--signal:var(--workforce-bar)}
+.signal-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.signal-copy{font-family:var(--serif);font-size:21px;line-height:1.25;margin:7px 0 0;max-width:44ch}
+.signal-value{font-family:var(--serif);font-size:clamp(52px,7vw,82px);font-weight:500;line-height:.78;letter-spacing:-.055em;color:var(--signal);white-space:nowrap}
+.metric-stat{margin-top:34px;border-top:1px solid var(--line);padding-top:18px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end}
+.metric-stat span,.metric-stat small{font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.metric-stat span{display:block}.metric-stat small{grid-column:1/-1;margin-top:-10px}
+.metric-stat strong{font-family:var(--serif);font-size:64px;font-weight:500;line-height:.8;letter-spacing:-.05em;color:var(--orange)}
+.method-premise{border-top:2px solid var(--ink);border-bottom:1px solid var(--line);padding:26px 0 28px;margin:-8px 0 42px;display:grid;grid-template-columns:150px minmax(0,760px);gap:28px}
+.method-premise .premise-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding-top:5px}
+.method-premise blockquote{font-family:var(--serif);font-size:25px;line-height:1.25;margin:0}
+.method-premise blockquote strong{font-weight:500;color:var(--ta-bar)}
+
+.section-head{max-width:900px;margin-bottom:48px}
+.section-copy h2{font-family:var(--serif);font-weight:500;font-size:clamp(42px,5.5vw,70px);line-height:.93;letter-spacing:-.045em;margin:0}
+.section-copy p{font-family:var(--serif);font-size:21px;line-height:1.38;color:#343936;max-width:66ch;margin:22px 0 0}
+
+.table-shell{border-top:2px solid var(--ink);border-bottom:1px solid var(--ink)}
+.cohort-table{display:grid;grid-template-columns:1fr 1fr}
+.table-block:first-child{border-right:1px solid var(--line)}
+.table-block{padding:0 26px 20px}.table-block:first-child{padding-left:0}.table-block:last-child{padding-right:0}
+.table-title{display:flex;justify-content:space-between;gap:20px;align-items:baseline;padding:18px 0 12px;border-bottom:1px solid var(--line)}
+.table-title h3{font-family:var(--serif);font-size:28px;font-weight:500;margin:0}.table-kicker{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+table{width:100%;border-collapse:collapse}th,td{padding:10px 4px;border-bottom:1px solid rgba(207,200,186,.62);text-align:right}th:first-child,td:first-child{text-align:left}th{font-family:var(--mono);font-weight:500;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}td{font-family:var(--mono);font-size:12px}td:first-child{font-family:var(--sans);font-weight:600;font-size:13px}.neg{color:#a72e1a}.pos{color:var(--green)}
+
+.chart-frame{background:var(--white);border:1px solid var(--line);box-shadow:8px 8px 0 var(--paper-2);padding:22px}
+.chart-frame svg{display:block;width:100%;height:auto}.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:15px}.legend-item{display:flex;align-items:center;gap:7px}.swatch{width:11px;height:11px;border-radius:50%;display:inline-block}.axis-note{font-size:9px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-top:10px}
+
+.metric-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:start}
+.formula{border-top:2px solid var(--ink);padding-top:24px}
+.formula-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.formula-main{font-family:var(--serif);font-size:clamp(42px,5vw,66px);line-height:1.05;letter-spacing:-.04em;margin:18px 0}
+.formula-line{height:1px;background:var(--ink);width:min(100%,520px)}
+.metric-notes{display:grid;gap:0;border-top:1px solid var(--ink)}
+.metric-note{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+.metric-note b{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em}.metric-note p{margin:0;color:#3d423f;font-family:var(--serif);font-size:18px;line-height:1.34}
+
+.scatter-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(320px,.66fr);gap:24px;align-items:start}
+.detail-panel{background:var(--ink);color:var(--white);position:sticky;top:28px;min-height:520px}
+.explorer-controls{padding:20px 25px 21px;border-bottom:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.035)}
+.explorer-kicker{font-family:var(--mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#aeb5b1;margin-bottom:8px}
+.explorer-title{font-family:var(--serif);font-size:23px;line-height:1.1;margin:0 0 6px;font-weight:500}
+.explorer-instruction{font-family:var(--sans);font-size:11.5px;line-height:1.45;color:#aeb5b1;margin:0 0 15px}
+.company-select{width:100%;appearance:none;-webkit-appearance:none;background:#fffdf8;color:var(--ink);border:0;border-radius:0;padding:11px 40px 11px 12px;font-family:var(--mono);font-size:11px;font-weight:600;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,#555 50%),linear-gradient(135deg,#555 50%,transparent 50%);background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.company-select:focus-visible{outline:2px solid #b7a9ff;outline-offset:3px}
+.panel-content{padding:25px}
+.panel-context{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#d6cfff;margin:0 0 13px;min-height:1.35em}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:17px}.panel-company{font-family:var(--serif);font-size:35px;line-height:1}.panel-ticker{font-family:var(--mono);font-size:10px;color:#aeb5b1}.cluster-tag{display:inline-block;margin:16px 0 8px;padding:5px 8px;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.07em;border:1px solid currentColor}
+.detail-panel dl{display:grid;grid-template-columns:1fr auto;gap:9px 18px;font-size:12px;margin:17px 0 0}.detail-panel dt{color:#aeb5b1}.detail-panel dd{margin:0;font-family:var(--mono);text-align:right}.detail-panel .divider{grid-column:1/-1;height:1px;background:rgba(255,255,255,.15);margin:4px 0}.panel-note{font-family:var(--serif);font-size:18px;line-height:1.3;border-top:1px solid rgba(255,255,255,.2);padding-top:18px;margin-top:21px}.panel-source{font-family:var(--mono);font-size:8.5px;line-height:1.55;color:#8e9792;margin-top:18px}
+.dot{cursor:pointer;transition:r .15s ease,opacity .5s ease}.dot:hover{r:14}.dot.pre{opacity:0}.dot.selected{stroke:var(--ink)!important;stroke-width:4px}.axlabel,.dotlabel,.axtitle{font-family:var(--mono)}.axlabel{font-size:10px;fill:var(--muted)}.dotlabel{font-size:9px;fill:var(--ink);pointer-events:none}.axtitle{font-size:10px;fill:var(--ink);font-weight:600;letter-spacing:.04em}
+
+.archetype-list{margin-top:52px;border-top:2px solid var(--ink)}
+.archetype-row{display:grid;grid-template-columns:46px 1.05fr .9fr 1.25fr;gap:24px;padding:25px 0;border-bottom:1px solid var(--line);align-items:start}
+.archetype-mark{width:16px;height:16px;border-radius:50%;margin-top:5px}.archetype-name h3{font-family:var(--serif);font-size:28px;line-height:1;margin:0}.members{font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--muted);margin-top:7px}.archetype-stat{font-family:var(--mono);font-size:10px;line-height:1.65}.archetype-story p{font-family:var(--serif);font-size:17px;line-height:1.32;margin:0}.archetype-question{margin-top:10px!important;color:var(--muted);font-style:italic}
+
+.methods-wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:55px}.methods-copy h3,.caveats h3{font-family:var(--serif);font-size:27px;font-weight:500;margin:0 0 15px}.methods-copy p,.caveats li{font-family:var(--serif);font-size:17px;line-height:1.46;color:#373c39}.methods-copy p{margin:0 0 15px}.caveats{border-left:1px solid var(--line);padding-left:34px}.caveats ol{padding-left:20px;margin:0}.caveats li{margin-bottom:14px}.download-row{display:flex;align-items:center;gap:16px;margin-top:36px}.download{background:var(--ink);color:var(--white);border:0;padding:13px 17px;cursor:pointer;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.07em}.download:hover{background:var(--blue)}.download-note{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+footer{background:var(--ink);color:var(--white);padding:48px 0}.footer-title{font-family:var(--serif);font-size:40px}
+
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;min-height:auto;padding:70px 0}.hero-rail{max-width:620px}.cohort-table,.metric-layout,.scatter-layout,.methods-wrap{grid-template-columns:1fr}.table-block:first-child{border-right:0;border-bottom:1px solid var(--line);padding-right:0}.table-block:last-child{padding-left:0}.detail-panel{position:static;min-height:auto}.archetype-row{grid-template-columns:26px 1fr}.archetype-stat,.archetype-story{grid-column:2}.section-signal,.method-premise{grid-template-columns:1fr}.signal-value{justify-self:start}.caveats{border-left:0;border-top:1px solid var(--line);padding:28px 0 0}
+}
+@media(max-width:560px){
+  .wrap{width:min(100% - 24px,var(--max))}.hero h1{font-size:62px}.hero-dek{font-size:22px}.story-section{padding:66px 0}.section-copy h2{font-size:46px}.table-block{padding-inline:0}.chart-frame{padding:10px;box-shadow:4px 4px 0 var(--paper-2)}.metric-note{grid-template-columns:1fr;gap:5px}.section-signal{gap:14px}.signal-copy{font-size:18px}.signal-value{font-size:56px}.method-premise blockquote{font-size:21px}.archetype-row{gap:12px}.footer-title{font-size:34px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dot{transition:none}.dot.pre{opacity:1}}
+</style>
+</head>
+<body>
+<!-- EDITABLE COMPANY NOTES: edit each company object's "note" value below. -->
+<!-- EDITABLE ARCHETYPES: edit each cluster object's "name", "tradeoff", and "question" values below. -->
+<script id="aptus-data" type="application/json">
+{
+  "meta": {
+    "contact": "aptusresearch.org"
+  },
+  "companies": [
+    {
+      "ticker": "META",
+      "name": "Meta",
+      "cohort": "mag7",
+      "taHeadcount": {
+        "y2022": 4672,
+        "now": 1048
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 86482,
+        "fy2025": 78865
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 116609,
+          "costOfRevenue": 25249,
+          "fcf": 19289
+        },
+        "fy2025": {
+          "revenue": 200966,
+          "costOfRevenue": 36175,
+          "fcf": 46109
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "Deepest cut in the set. Recruiting was explicitly targeted in both the Nov 2022 and Mar 2023 layoff waves — and gross profit per employee nearly doubled since.",
+      "spotlight": false,
+      "cluster": "photo"
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "cohort": "mag7",
+      "taHeadcount": {
+        "y2022": 10456,
+        "now": 4942
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 1541000,
+        "fy2025": 1576000
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 513983,
+          "costOfRevenue": 288831,
+          "fcf": -16893
+        },
+        "fy2025": {
+          "revenue": 716924,
+          "costOfRevenue": 356414,
+          "fcf": 7695
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "The largest recruiting organization in the set at both dates. Halved TA while adding 35,000 net employees.",
+      "spotlight": true,
+      "cluster": "leanbulk"
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet",
+      "cohort": "mag7",
+      "taHeadcount": {
+        "y2022": 3958,
+        "now": 1887
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 190234,
+        "fy2025": 190820
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 282836,
+          "costOfRevenue": 126203,
+          "fcf": 60010
+        },
+        "fy2025": {
+          "revenue": 402836,
+          "costOfRevenue": 162535,
+          "fcf": 73266
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "Census (3,958) independently matches NYT-reported peak of 'more than 3,000' in the recruiting group. Roughly halved since, on a flat workforce.",
+      "spotlight": true,
+      "cluster": "leanbulk"
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "cohort": "mag7",
+      "taHeadcount": {
+        "y2022": 2172,
+        "now": 1447
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 221000,
+        "fy2025": 228000
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 198270,
+          "costOfRevenue": 62650,
+          "fcf": 65149
+        },
+        "fy2025": {
+          "revenue": 281724,
+          "costOfRevenue": 87831,
+          "fcf": 71611
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "Cut a third of TA while growing headcount — the quiet version of the tech playbook.",
+      "spotlight": false,
+      "cluster": "leanbulk"
+    },
+    {
+      "ticker": "AAPL",
+      "name": "Apple",
+      "cohort": "mag7",
+      "taHeadcount": {
+        "y2022": 1339,
+        "now": 1149
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 164000,
+        "fy2025": 166000
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 394328,
+          "costOfRevenue": 223546,
+          "fcf": 111443
+        },
+        "fy2025": {
+          "revenue": 416161,
+          "costOfRevenue": 220960,
+          "fcf": 98767
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "Recruiting fell only 14%, without a public restructuring narrative; the operating model was already comparatively lean.",
+      "spotlight": false,
+      "cluster": "unmedicated"
+    },
+    {
+      "ticker": "NVDA",
+      "name": "Nvidia",
+      "cohort": "mag7",
+      "taHeadcount": {
+        "y2022": 217,
+        "now": 334
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 26196,
+        "fy2025": 42000
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 26974,
+          "costOfRevenue": 11618,
+          "fcf": 3808
+        },
+        "fy2025": {
+          "revenue": 215938,
+          "costOfRevenue": 62475,
+          "fcf": 96676
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "Grew recruiting 54% amid the AI supercycle. GP per employee up >5x — shown here, excluded from correlation claims as the obvious outlier.",
+      "spotlight": false,
+      "cluster": "bulking"
+    },
+    {
+      "ticker": "TSLA",
+      "name": "Tesla",
+      "cohort": "mag7",
+      "taHeadcount": {
+        "y2022": 647,
+        "now": 616
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 127855,
+        "fy2025": 134785
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 81462,
+          "costOfRevenue": 60609,
+          "fcf": 7561
+        },
+        "fy2025": {
+          "revenue": 94827,
+          "costOfRevenue": 77733,
+          "fcf": 6220
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "The public narrative emphasized recruiter elimination, but net TA capacity changed only 5%. Gross profit per employee nevertheless fell—the only decline in the set.",
+      "spotlight": false,
+      "cluster": "asterisk"
+    },
+    {
+      "ticker": "WMT",
+      "name": "Walmart",
+      "cohort": "old7",
+      "taHeadcount": {
+        "y2022": 734,
+        "now": 463
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 2100000,
+        "fy2025": 2100000
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 611289,
+          "costOfRevenue": 463721,
+          "fcf": 11984
+        },
+        "fy2025": {
+          "revenue": 713160,
+          "costOfRevenue": 535400,
+          "fcf": 14900
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "Reduced TA by 37% with no comparable public narrative, while the workforce remained at 2.1 million.",
+      "spotlight": false,
+      "cluster": "quiet"
+    },
+    {
+      "ticker": "UPS",
+      "name": "UPS",
+      "cohort": "old7",
+      "taHeadcount": {
+        "y2022": 255,
+        "now": 258
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 500000,
+        "fy2025": 460000
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 100338,
+          "costOfRevenue": 26568,
+          "fcf": 9335
+        },
+        "fy2025": {
+          "revenue": 88661,
+          "costOfRevenue": 18011,
+          "fcf": 4765
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "Shrank the workforce 8% while holding TA flat — the inverse of the tech pattern.",
+      "spotlight": false,
+      "cluster": "unmedicated"
+    },
+    {
+      "ticker": "JPM",
+      "name": "JPMorgan Chase",
+      "cohort": "old7",
+      "taHeadcount": {
+        "y2022": 1260,
+        "now": 918
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL; JPMC name variants",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 293723,
+        "fy2025": 318512
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 122306,
+          "costOfRevenue": null,
+          "fcf": null
+        },
+        "fy2025": {
+          "revenue": 168235,
+          "costOfRevenue": null,
+          "fcf": null
+        }
+      },
+      "gpBasis": "netRevenue",
+      "note": "Grew headcount 8% while trimming TA 27%. Banks report no cost of revenue; the comparison therefore uses total net revenue per employee. FCF is omitted because bank operating cash flow is not a meaningful analog.",
+      "spotlight": false,
+      "cluster": "quiet"
+    },
+    {
+      "ticker": "PG",
+      "name": "Procter & Gamble",
+      "cohort": "old7",
+      "taHeadcount": {
+        "y2022": 231,
+        "now": 208
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 106000,
+        "fy2025": 109000
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 80187,
+          "costOfRevenue": 42157,
+          "fcf": 13567
+        },
+        "fy2025": {
+          "revenue": 84284,
+          "costOfRevenue": 41164,
+          "fcf": 14044
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "The most stable profile in the set: limited movement in TA, workforce, and gross profit per employee.",
+      "spotlight": false,
+      "cluster": "unmedicated"
+    },
+    {
+      "ticker": "DIS",
+      "name": "Disney",
+      "cohort": "old7",
+      "taHeadcount": {
+        "y2022": 564,
+        "now": 351
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 220000,
+        "fy2025": 231000
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 82722,
+          "costOfRevenue": 54401,
+          "fcf": 1059
+        },
+        "fy2025": {
+          "revenue": 94425,
+          "costOfRevenue": 58766,
+          "fcf": 10077
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "Reduced TA more than Microsoft while workforce grew 5%, making it the strongest incumbent example of the broader reset.",
+      "spotlight": true,
+      "cluster": "quiet"
+    },
+    {
+      "ticker": "CAT",
+      "name": "Caterpillar",
+      "cohort": "old7",
+      "taHeadcount": {
+        "y2022": 240,
+        "now": 283
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 109100,
+        "fy2025": 118000
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 59427,
+          "costOfRevenue": 41350,
+          "fcf": 5167
+        },
+        "fy2025": {
+          "revenue": 67589,
+          "costOfRevenue": 44752,
+          "fcf": 7453
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "Expanded recruiting 18% through the market freeze, consistent with a company still constrained by talent supply.",
+      "spotlight": false,
+      "cluster": "bulking"
+    },
+    {
+      "ticker": "HD",
+      "name": "Home Depot",
+      "cohort": "old7",
+      "taHeadcount": {
+        "y2022": 226,
+        "now": 182
+      },
+      "taSource": "Coresignal point-in-time census (Jun 2022 / Jun 2026), cross-validated against PDL",
+      "taEstimated": false,
+      "workforce": {
+        "fy2022": 471600,
+        "fy2025": 472400
+      },
+      "financials": {
+        "fy2022": {
+          "revenue": 157403,
+          "costOfRevenue": 104625,
+          "fcf": 11496
+        },
+        "fy2025": {
+          "revenue": 164683,
+          "costOfRevenue": 109818,
+          "fcf": 12646
+        }
+      },
+      "gpBasis": "grossProfit",
+      "note": "One recruiter per ~2,600 employees: frontline hiring is delegated to the field, and it shows.",
+      "spotlight": false,
+      "cluster": "unmedicated"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "photo",
+      "name": "The Hard Reset",
+      "color": "#6D5BD0",
+      "members": [
+        "META"
+      ],
+      "stat": "TA −78% · workforce −9% · GP/employee +98%",
+      "tradeoff": "Meta treated recruiting capacity as part of the restructuring itself, not merely a support function to scale down. The near-term economics improved sharply; the strategic cost is a much thinner internal engine if growth accelerates.",
+      "question": "After reducing the function to roughly one-quarter of its former scale, how quickly could Meta recover market intelligence, candidate relationships, and execution speed?"
+    },
+    {
+      "id": "leanbulk",
+      "name": "The Lean Growth Engine",
+      "color": "#C45A42",
+      "members": [
+        "AMZN",
+        "GOOGL",
+        "MSFT"
+      ],
+      "stat": "TA −33 to −53% · workforce flat-to-growing · GP/employee +39 to +57%",
+      "tradeoff": "Amazon, Alphabet, and Microsoft preserved or expanded workforce scale while operating with materially smaller recruiting organizations. Their model assumes brand pull, lower attrition, internal mobility, and automation can replace part of the old capacity.",
+      "question": "Is this a durable operating model—or an equilibrium that depends on a weak external labor market?"
+    },
+    {
+      "id": "quiet",
+      "name": "The Incumbent Rebalancers",
+      "color": "#B1872E",
+      "members": [
+        "DIS",
+        "WMT",
+        "JPM"
+      ],
+      "stat": "TA −27 to −38% · no announcements · GP/employee +20 to +27%",
+      "tradeoff": "Disney, Walmart, and JPMorgan made tech-like reductions without tech-like headlines. The pattern looks less like crisis response than a broad reset in how mature enterprises staff centralized recruiting.",
+      "question": "When a function was already leaner than big tech, where does efficiency end and organizational reach begin to erode?"
+    },
+    {
+      "id": "unmedicated",
+      "name": "The Steady-State Operators",
+      "color": "#667068",
+      "members": [
+        "AAPL",
+        "PG",
+        "HD",
+        "UPS"
+      ],
+      "stat": "TA −14% to +1% · workforce −8% to +3% · GP/employee +4 to +13%",
+      "tradeoff": "Apple, P&G, Home Depot, and UPS mostly avoided a dramatic reset. Their model treats recruiting capacity as operating infrastructure to be tuned gradually—especially where decentralized or high-volume hiring makes sudden cuts costly.",
+      "question": "Does continuity outperform restructuring when demand returns—or simply preserve more fixed cost in the meantime?"
+    },
+    {
+      "id": "bulking",
+      "name": "The Capacity Builders",
+      "color": "#2F725E",
+      "members": [
+        "NVDA",
+        "CAT"
+      ],
+      "stat": "TA +18 to +54% · the AI lab and the bulldozer company",
+      "tradeoff": "Nvidia and Caterpillar increased recruiting because talent supply—not overhead—was the binding constraint. Their definition of healthy growth begins with enough capacity to find scarce people before demand becomes execution risk.",
+      "question": "When growth is opportunity-constrained, how early should recruiting scale ahead of confirmed demand?"
+    },
+    {
+      "id": "asterisk",
+      "name": "The Margin Exception",
+      "color": "#5E6573",
+      "members": [
+        "TSLA"
+      ],
+      "stat": "Loudest announcement · net TA change −5% · the set's only GP/employee decline (−22%)",
+      "tradeoff": "Tesla shows why this metric must be interpreted as a business outcome, not an HR score. Recruiting barely changed, but price cuts and margin compression drove gross profit per employee down.",
+      "question": "How much of observed “workforce productivity” is actually pricing, product mix, or capital intensity?"
+    }
+  ]
+}
+</script>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <!-- EDITABLE PROSE: HERO TITLE AND SUBTITLE -->
+      <h1>Leaner… <em>and meaner?</em></h1>
+      <p class="hero-dek">How fourteen of the most important companies in the world changed recruiting—and redefined healthy growth.</p>
+      <!-- END EDITABLE PROSE -->
+  </div>
+</section>
+
+<section class="story-section" id="cut">
+  <div class="wrap">
+    <!-- EDITABLE PROSE: RECRUITING CAPACITY -->
+    <div class="section-head"><div class="section-copy">
+      <h2>The recruiting boom ended. The machinery did not return.</h2>
+      <p>Corporate recruiting reached its post-pandemic high-water mark in 2022. Technology companies made the reversal visible, but the contraction was broader: by mid-2026, eleven of the fourteen companies in this sample employed fewer people in talent acquisition than they had four years earlier.</p>
+    </div></div>
+    <!-- END EDITABLE PROSE -->
+    <div class="section-signal signal-ta"><div><div class="signal-label">Median company · 2022 → 2026</div><p class="signal-copy">Talent-acquisition headcount contracted by almost one-quarter.</p></div><strong class="signal-value" id="stat-ta">—</strong></div>
+    <div class="table-shell"><div class="cohort-table">
+      <div class="table-block"><div class="table-title"><h3>Magnificent Seven</h3><span class="table-kicker">Point-in-time TA census</span></div><table id="tbl-mag7"></table></div>
+      <div class="table-block"><div class="table-title"><h3>Steady Seven</h3><span class="table-kicker">Point-in-time TA census</span></div><table id="tbl-old7"></table></div>
+    </div></div>
+  </div>
+</section>
+
+<section class="story-section" id="body">
+  <div class="wrap">
+    <!-- EDITABLE PROSE: WORKFORCE DIVERGENCE -->
+    <div class="section-head"><div class="section-copy">
+      <h2>Recruiting shrank faster than the companies it served.</h2>
+      <p>At twelve of the fourteen companies, total workforce was flat or larger by FY2025—even as TA contracted at most of them. The restructuring was therefore not simply a response to fewer employees. It was a management bet that less recruiting capacity could support the same institution.</p>
+    </div></div>
+    <!-- END EDITABLE PROSE -->
+    <div class="section-signal signal-workforce"><div><div class="signal-label">Median company · FY2022 → FY2025</div><p class="signal-copy">The workforce became slightly larger, not smaller.</p></div><strong class="signal-value" id="stat-wf">—</strong></div>
+    <div class="chart-frame"><svg id="bars" viewBox="0 0 640 600" role="img" aria-label="Talent-acquisition change compared with workforce change"></svg>
+      <div class="legend"><span class="legend-item"><span class="swatch" style="background:var(--ta-bar)"></span>TA headcount</span><span class="legend-item"><span class="swatch" style="background:var(--workforce-bar)"></span>Total workforce</span><span>Sorted by depth of TA cut</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="story-section" id="measure">
+  <div class="wrap">
+    <!-- EDITABLE PROSE: GROSS PROFIT MEASURE -->
+    <div class="section-head"><div class="section-copy">
+      <h2>A measure of output—not an HR score.</h2>
+      <p>To compare companies with radically different economics, this analysis uses gross profit per employee. It is a cleaner cross-company lens than revenue per employee, while still requiring care: pricing, mix, margins, and capital intensity can all move the result.</p>
+    </div></div>
+    <!-- END EDITABLE PROSE -->
+    <div class="metric-layout">
+      <div class="formula"><div class="formula-label">The comparison measure</div><div class="formula-main">Gross profit<br>÷ employees</div><div class="formula-line"></div>
+        <div class="metric-stat"><span>Median change · FY2022 → FY2025</span><strong id="stat-gp">—</strong><small>Gross profit per employee</small></div>
+      </div>
+      <!-- EDITABLE PROSE: METRIC EXPLANATION -->
+      <div class="metric-notes">
+        <div class="metric-note"><b>Why not revenue?</b><p>A dollar of software and a dollar of retail resale do not carry the same economics. Gross profit strips out more of that structural difference.</p></div>
+        <div class="metric-note"><b>What it reveals</b><p>How much value remains after direct costs, relative to the size of the workforce supporting the business.</p></div>
+        <div class="metric-note"><b>What it cannot prove</b><p>It measures a business outcome, not isolated labor quality. Pricing, product mix, and margins can move the number without anyone becoming more effective.</p></div>
+        <div class="metric-note"><b>Bank exception</b><p>JPMorgan is shown on net revenue per employee because banks do not report a comparable cost-of-revenue line.</p></div>
+      </div>
+      <!-- END EDITABLE PROSE -->
+    </div>
+  </div>
+</section>
+
+<section class="story-section" id="types">
+  <div class="wrap">
+    <!-- EDITABLE PROSE: GROWTH MODELS -->
+    <div class="section-head"><div class="section-copy">
+      <h2>Six answers to one question: what does healthy growth require?</h2>
+      <p>Once recruiting capacity, workforce movement, and unit economics are viewed together, the two headline cohorts dissolve into six operating models. These are not rankings. Each reflects a different view of where growth capacity should sit, which constraint matters most, and what risk management is willing to carry.</p>
+    </div></div>
+    <!-- END EDITABLE PROSE -->
+    <div class="scatter-layout">
+      <div class="chart-frame"><svg id="scatter" viewBox="0 0 640 520" role="img" aria-label="Talent-acquisition change versus gross profit per employee change"></svg><div class="legend" id="cluster-legend"></div><div class="axis-note">Nvidia (+523%) is pinned to the top edge. Select a dot or use the company explorer.</div></div>
+      <aside class="detail-panel" aria-label="Company explorer">
+        <div class="explorer-controls">
+          <div class="explorer-kicker">Company explorer</div>
+          <h3 class="explorer-title">See the underlying company story.</h3>
+          <p class="explorer-instruction">Choose any of the fourteen companies, or select its dot on the chart.</p>
+          <label class="visually-hidden" for="company-select">Select a company</label>
+          <select class="company-select" id="company-select"></select>
+        </div>
+        <div class="panel-content" id="panel" aria-live="polite"></div>
+      </aside>
+    </div>
+    <div class="archetype-list" id="archetypes"></div>
+  </div>
+</section>
+
+<section class="story-section" id="methods">
+  <div class="wrap">
+    <!-- EDITABLE PROSE: METHODS -->
+    <div class="section-head"><div class="section-copy"><h2>How the people who hire people were counted.</h2></div></div>
+    <!-- END EDITABLE PROSE -->
+    <!-- EDITABLE PROSE: METHODS PREMISE -->
+    <div class="method-premise"><div class="premise-label">Why TA is worth measuring</div><blockquote><strong>“The TA org chart is a confession.”</strong> A recruiting organization is a forward commitment: a bet on next year’s hiring demand, paid for with this year’s payroll. That is why this analysis treats recruiting capacity as an operating signal, not merely an HR cost.</blockquote></div>
+    <!-- END EDITABLE PROSE -->
+    <div class="methods-wrap">
+      <!-- EDITABLE PROSE: METHODS DETAILS -->
+      <div class="methods-copy">
+        <h3>Measures</h3>
+        <p><strong>TA headcount.</strong> Point-in-time censuses for June 2022 and June 2026 from Coresignal’s employee dataset, using nested queries that bind employer, title, and dates to the same job entry. Counts above the API’s 1,000-record page were resolved by partitioning the ID space and deduplicating the union. Current counts were cross-validated against People Data Labs.</p>
+        <p><strong>Workforce and financials.</strong> Total employees, revenue, cost of revenue, and free cash flow come from 10-K filings for fiscal 2022 and the most recent completed fiscal year. Fiscal-year mappings differ for Walmart, Home Depot, and Nvidia.</p>
+        <p><strong>Output measure.</strong> Gross profit per employee equals revenue minus cost of revenue, divided by year-end headcount on the same basis in both years. JPMorgan uses total net revenue per employee. Incremental gross profit per marginal employee is calculated only where workforce change exceeds 3% in absolute terms.</p>
+        <div class="download-row"><button class="download" id="download-csv" type="button">Download the data</button><span class="download-note">14 companies · inputs + derived measures</span></div>
+      </div>
+      <!-- END EDITABLE PROSE -->
+      <!-- EDITABLE PROSE: LIMITATIONS -->
+      <div class="caveats"><h3>What could make this wrong</h3><ol>
+        <li><strong>Correlation is not causation.</strong> TA cuts and gains in gross profit per employee may share a third driver rather than a direct relationship.</li>
+        <li><strong>Observed declines are likely floors.</strong> Stale profiles inflate both census dates and generally understate contraction.</li>
+        <li><strong>Outsourcing is partly invisible.</strong> RPO substitution can move recruiters off the company’s apparent payroll.</li>
+        <li><strong>Levels vary by vendor.</strong> The analysis relies more heavily on within-instrument change than on absolute cross-vendor counts.</li>
+        <li><strong>Fiscal years do not align.</strong> Annual comparisons are approximate across companies with different year ends.</li>
+      </ol></div>
+      <!-- END EDITABLE PROSE -->
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap footer-title">Aptus Research</div></footer>
+
+<script>
+(() => {
+  'use strict';
+  const DATA = JSON.parse(document.getElementById('aptus-data').textContent);
+  const companies = DATA.companies;
+  const clusters = DATA.clusters;
+  const clusterById = Object.fromEntries(clusters.map(c => [c.id, c]));
+  const NS = 'http://www.w3.org/2000/svg';
+
+  const derive = c => {
+    const ta0 = c.taHeadcount.y2022, ta1 = c.taHeadcount.now;
+    const wf0 = c.workforce.fy2022, wf1 = c.workforce.fy2025;
+    const f0 = c.financials.fy2022, f1 = c.financials.fy2025;
+    const gp0 = c.gpBasis === 'netRevenue' ? f0.revenue : f0.revenue - f0.costOfRevenue;
+    const gp1 = c.gpBasis === 'netRevenue' ? f1.revenue : f1.revenue - f1.costOfRevenue;
+    const gpe0 = gp0 / wf0 * 1e6, gpe1 = gp1 / wf1 * 1e6;
+    const wfChange = (wf1 - wf0) / wf0 * 100;
+    const result = {
+      taChange: (ta1 - ta0) / ta0 * 100,
+      wfChange,
+      gp0, gp1, gpe0, gpe1,
+      gpeChange: (gpe1 - gpe0) / gpe0 * 100,
+      incremental: null,
+      incrementalKind: null
+    };
+    const dWF = wf1 - wf0;
+    if (Math.abs(wfChange) >= 3) {
+      result.incremental = (gp1 - gp0) * 1e6 / dWF;
+      result.incrementalKind = dWF > 0 ? 'added' : (gp1 >= gp0 ? 'grewWhileCutting' : 'lostPerCut');
+    }
+    return result;
+  };
+  companies.forEach(c => c.d = derive(c));
+
+  const fmtPct = v => `${v > 0 ? '+' : ''}${v.toFixed(Math.abs(v) >= 100 ? 0 : 1).replace(/\.0$/, '')}%`;
+  const fmtUSD = v => Math.abs(v) >= 1e6 ? `$${(v / 1e6).toFixed(2)}M` : Math.abs(v) >= 1e3 ? `$${Math.round(v / 1e3)}K` : `$${Math.round(v)}`;
+  const fmtN = v => v.toLocaleString('en-US');
+  const median = values => { const a = [...values].sort((x,y) => x-y), m = Math.floor(a.length/2); return a.length % 2 ? a[m] : (a[m-1]+a[m])/2; };
+  const svgEl = (name, attrs, parent) => { const node = document.createElementNS(NS, name); Object.entries(attrs).forEach(([k,v]) => node.setAttribute(k,v)); (parent || document.body).appendChild(node); return node; };
+  document.getElementById('stat-ta').textContent = fmtPct(median(companies.map(c => c.d.taChange)));
+  document.getElementById('stat-wf').textContent = fmtPct(median(companies.map(c => c.d.wfChange)));
+  document.getElementById('stat-gp').textContent = fmtPct(median(companies.map(c => c.d.gpeChange)));
+
+  function buildTable(id, cohort) {
+    const rows = companies.filter(c => c.cohort === cohort).sort((a,b) => a.d.taChange - b.d.taChange);
+    document.getElementById(id).innerHTML = `<thead><tr><th>Company</th><th>2022</th><th>2026</th><th>Change</th></tr></thead><tbody>${rows.map(c => `<tr><td>${c.name}</td><td>${fmtN(c.taHeadcount.y2022)}</td><td>${fmtN(c.taHeadcount.now)}</td><td class="${c.d.taChange < 0 ? 'neg' : 'pos'}">${fmtPct(c.d.taChange)}</td></tr>`).join('')}</tbody>`;
+  }
+  buildTable('tbl-mag7','mag7');
+  buildTable('tbl-old7','old7');
+
+  (() => {
+    const svg = document.getElementById('bars');
+    const rows = [...companies].sort((a,b) => a.d.taChange - b.d.taChange);
+    const W=640,rowH=38,mT=26,mB=30,mL=64,mR=50,H=mT+mB+rows.length*rowH,lo=-85,hi=70;
+    svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+    const X = v => mL + (v-lo)/(hi-lo)*(W-mL-mR);
+    [-80,-60,-40,-20,0,20,40,60].forEach(v => {
+      svgEl('line',{x1:X(v),y1:mT-6,x2:X(v),y2:H-mB,stroke:v===0?'#858b87':'#ebe6dc','stroke-width':v===0?1.4:1},svg);
+      const t=svgEl('text',{x:X(v),y:H-10,'text-anchor':'middle','class':'axlabel'},svg); t.textContent=`${v>0?'+':''}${v}%`;
+    });
+    rows.forEach((c,i) => {
+      const y=mT+i*rowH, ta=c.d.taChange, wf=c.d.wfChange;
+      if(i%2===0) svgEl('rect',{x:mL-7,y:y-3,width:W-mL-mR+14,height:34,fill:'#f7f2e8',rx:2},svg);
+      const label=svgEl('text',{x:mL-10,y:y+18,'text-anchor':'end','class':'axlabel','font-weight':600},svg); label.textContent=c.ticker;
+      svgEl('rect',{x:Math.min(X(0),X(ta)),y:y+2,width:Math.abs(X(ta)-X(0)),height:10,fill:'#4f3d63',rx:5},svg);
+      svgEl('rect',{x:Math.min(X(0),X(wf)),y:y+18,width:Math.max(Math.abs(X(wf)-X(0)),2),height:10,fill:'#d1a23f',rx:5},svg);
+      const t1=svgEl('text',{x:ta<0?X(ta)-5:X(ta)+5,y:y+11,'text-anchor':ta<0?'end':'start','class':'dotlabel',fill:'#4f3d63','font-weight':600},svg); t1.textContent=fmtPct(ta);
+      const t2=svgEl('text',{x:wf<0?X(wf)-5:X(wf)+5,y:y+27,'text-anchor':wf<0?'end':'start','class':'dotlabel',fill:'#80601b','font-weight':600},svg); t2.textContent=fmtPct(wf);
+    });
+  })();
+
+  const scatter = document.getElementById('scatter');
+  const W=640,H=520,mL=58,mR=20,mT=26,mB=52,iw=W-mL-mR,ih=H-mT-mB,x0=-88,x1=64,y0=-32,y1=112,cap=106;
+  const X = v => mL + (v-x0)/(x1-x0)*iw;
+  const Y = v => mT + ih - (v-y0)/(y1-y0)*ih;
+  [-80,-60,-40,-20,0,20,40,60].forEach(v => {
+    svgEl('line',{x1:X(v),y1:mT,x2:X(v),y2:mT+ih,stroke:'#ebe6dc'},scatter);
+    const t=svgEl('text',{x:X(v),y:mT+ih+18,'text-anchor':'middle','class':'axlabel'},scatter);t.textContent=`${v>0?'+':''}${v}%`;
+  });
+  [-20,0,20,40,60,80,100].forEach(v => {
+    svgEl('line',{x1:mL,y1:Y(v),x2:mL+iw,y2:Y(v),stroke:'#ebe6dc'},scatter);
+    const t=svgEl('text',{x:mL-8,y:Y(v)+4,'text-anchor':'end','class':'axlabel'},scatter);t.textContent=`${v>0?'+':''}${v}%`;
+  });
+  svgEl('line',{x1:X(0),y1:mT,x2:X(0),y2:mT+ih,stroke:'#858b87','stroke-width':1.4},scatter);
+  svgEl('line',{x1:mL,y1:Y(0),x2:mL+iw,y2:Y(0),stroke:'#858b87','stroke-width':1.4},scatter);
+  let title=svgEl('text',{x:mL+iw/2,y:H-8,'text-anchor':'middle','class':'axtitle'},scatter);title.textContent='Δ TALENT-ACQUISITION HEADCOUNT →';
+  title=svgEl('text',{x:13,y:mT+ih/2,'text-anchor':'middle','class':'axtitle',transform:`rotate(-90 13 ${mT+ih/2})`},scatter);title.textContent='Δ GROSS PROFIT / EMPLOYEE →';
+
+  const dots={}, labels=[];
+  companies.forEach((c,i) => {
+    const cl=clusterById[c.cluster], gy=Math.min(c.d.gpeChange,cap);
+    const dot=svgEl('circle',{cx:X(c.d.taChange),cy:Y(gy),r:11,fill:cl.color,stroke:'#fffdf8','stroke-width':2,'class':'dot pre',tabindex:0,role:'button','aria-label':`${c.name}: TA ${fmtPct(c.d.taChange)}, gross profit per employee ${fmtPct(c.d.gpeChange)}`},scatter);
+    dot.addEventListener('click',()=>selectCompany(c.ticker));
+    dot.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectCompany(c.ticker)}});
+    dots[c.ticker]=dot;
+    const label=svgEl('text',{x:X(c.d.taChange),y:Y(gy)-15,'text-anchor':'middle','class':'dotlabel'},scatter);
+    label.textContent=c.ticker+(c.d.gpeChange>cap?` ↑${Math.round(c.d.gpeChange)}%`:'');
+    labels.push({el:label,x:X(c.d.taChange),y:Y(gy)});
+    setTimeout(()=>dot.classList.remove('pre'),80+i*45);
+  });
+  labels.sort((a,b)=>a.x-b.x);
+  for(let i=1;i<labels.length;i++) for(let j=Math.max(0,i-3);j<i;j++) {
+    const a=labels[j],b=labels[i];
+    if(Math.abs(a.x-b.x)<44 && Math.abs(+a.el.getAttribute('y')-(+b.el.getAttribute('y')))<12) b.el.setAttribute('y',b.y+24);
+  }
+  document.getElementById('cluster-legend').innerHTML=clusters.map(c=>`<span class="legend-item"><span class="swatch" style="background:${c.color}"></span>${c.name}</span>`).join('');
+
+  const panel=document.getElementById('panel');
+  const companySelect=document.getElementById('company-select');
+  const cohortLabels={mag7:'Magnificent Seven',old7:'Steady Seven'};
+  ['mag7','old7'].forEach(cohort=>{
+    const group=document.createElement('optgroup');
+    group.label=cohortLabels[cohort];
+    companies.filter(c=>c.cohort===cohort).sort((a,b)=>a.name.localeCompare(b.name)).forEach(c=>{
+      const option=document.createElement('option');
+      option.value=c.ticker;
+      option.textContent=`${c.name} (${c.ticker})`;
+      group.appendChild(option);
+    });
+    companySelect.appendChild(group);
+  });
+  companySelect.addEventListener('change',event=>selectCompany(event.target.value));
+
+  function selectCompany(ticker) {
+    const c=companies.find(x=>x.ticker===ticker), cl=clusterById[c.cluster];
+    if(!c)return;
+    Object.values(dots).forEach(d=>d.classList.remove('selected'));
+    dots[ticker].classList.add('selected');
+    companySelect.value=ticker;
+    const gpLabel=c.gpBasis==='netRevenue'?'Net revenue / employee':'Gross profit / employee';
+    const context=c.ticker==='META'?'Deepest TA contraction in the sample':'';
+    let incremental='';
+    if(c.d.incremental!==null) {
+      const label=c.d.incrementalKind==='added'?'GP per employee added':c.d.incrementalKind==='grewWhileCutting'?'GP preserved per role cut':'GP lost per role cut';
+      incremental=`<dt>${label}</dt><dd>${fmtUSD(Math.abs(c.d.incremental))}</dd>`;
+    }
+    panel.innerHTML=`<div class="panel-context">${context}</div><div class="panel-head"><span class="panel-company">${c.name}</span><span class="panel-ticker">${c.ticker}</span></div><span class="cluster-tag" style="color:${cl.color}">${cl.name}</span><dl><dt>TA ’22 → ’26</dt><dd>${fmtN(c.taHeadcount.y2022)} → ${fmtN(c.taHeadcount.now)}</dd><dt>Δ TA</dt><dd>${fmtPct(c.d.taChange)}</dd><div class="divider"></div><dt>Workforce FY22 → FY25</dt><dd>${fmtN(c.workforce.fy2022)} → ${fmtN(c.workforce.fy2025)}</dd><dt>Δ workforce</dt><dd>${fmtPct(c.d.wfChange)}</dd><dt>Employees / recruiter</dt><dd>${fmtN(Math.round(c.workforce.fy2022/c.taHeadcount.y2022))} → ${fmtN(Math.round(c.workforce.fy2025/c.taHeadcount.now))}</dd><div class="divider"></div><dt>${gpLabel} FY22</dt><dd>${fmtUSD(c.d.gpe0)}</dd><dt>${gpLabel} FY25</dt><dd>${fmtUSD(c.d.gpe1)}</dd><dt>Δ GP / employee</dt><dd>${fmtPct(c.d.gpeChange)}</dd>${incremental}</dl><div class="panel-note">${c.note}</div><div class="panel-source">${c.taSource}. Financials: 10-K, FY22/FY25.${c.gpBasis==='netRevenue'?' Net-revenue basis.':''}</div>`;
+  }
+  selectCompany('META');
+
+  document.getElementById('archetypes').innerHTML=clusters.map((cl,i)=>`<article class="archetype-row"><div class="archetype-mark" style="background:${cl.color}"></div><div class="archetype-name"><h3>${cl.name}</h3><div class="members">${cl.members.join(' · ')}</div></div><div class="archetype-stat">${cl.stat}</div><div class="archetype-story"><p>${cl.tradeoff}</p><p class="archetype-question">${cl.question}</p></div></article>`).join('');
+
+  document.getElementById('download-csv').addEventListener('click',()=>{
+    const head=['ticker','name','cohort','archetype','ta_2022','ta_2026','ta_change_pct','workforce_fy22','workforce_fy25','wf_change_pct','emp_per_recruiter_22','emp_per_recruiter_now','rev_fy22_$M','cost_of_revenue_fy22_$M','rev_fy25_$M','cost_of_revenue_fy25_$M','gp_basis','gp_per_emp_fy22_$','gp_per_emp_fy25_$','gp_per_emp_change_pct','fcf_fy25_$M','note'];
+    const rows=companies.map(c=>[c.ticker,c.name,c.cohort,clusterById[c.cluster].name.replace(/,/g,''),c.taHeadcount.y2022,c.taHeadcount.now,c.d.taChange.toFixed(1),c.workforce.fy2022,c.workforce.fy2025,c.d.wfChange.toFixed(1),Math.round(c.workforce.fy2022/c.taHeadcount.y2022),Math.round(c.workforce.fy2025/c.taHeadcount.now),c.financials.fy2022.revenue,c.financials.fy2022.costOfRevenue??'',c.financials.fy2025.revenue,c.financials.fy2025.costOfRevenue??'',c.gpBasis,Math.round(c.d.gpe0),Math.round(c.d.gpe1),c.d.gpeChange.toFixed(1),c.financials.fy2025.fcf??'',`"${c.note.replace(/"/g,'""')}"`].join(','));
+    const blob=new Blob([[head.join(','),...rows].join('\n')],{type:'text/csv'}),a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);a.download='aptus-leaner-and-meaner-data.csv';a.click();URL.revokeObjectURL(a.href);
+  });
+})();
+</script>
+</body>
+</html>
