@@ -19,8 +19,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Leaner… and Meaner? — Aptus</title>
-<meta name="description" content="How fourteen of the most important companies in the world changed recruiting—and redefined healthy growth.">
+<title>Leaner—and Meaner? — Aptus</title>
+<meta name="description" content="Fourteen leading companies cut recruiting capacity far faster than they cut employment. Most kept growing. Their choices reveal six competing models of healthy growth.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
@@ -49,41 +49,37 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 button{font:inherit}
-.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .wrap{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
 .kicker,.eyebrow,.tiny,.axis-note,.legend,.meta,.table-kicker{font-family:var(--mono)}
 
 .hero{background:var(--ink);color:var(--white);overflow:hidden;position:relative}
 .hero:after{content:"";position:absolute;width:540px;height:540px;border:1px solid rgba(255,255,255,.14);border-radius:50%;right:-155px;top:-170px;box-shadow:0 0 0 90px rgba(255,255,255,.025),0 0 0 180px rgba(255,255,255,.02)}
-.hero-inner{position:relative;z-index:1;min-height:680px;padding:76px 0 54px;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.65fr);gap:70px;align-items:end}
+.hero-inner{position:relative;z-index:1;min-height:680px;padding:76px 0 64px;display:flex;align-items:flex-end}
 .eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#bfc5c2;margin-bottom:26px}
-.hero h1{font-family:var(--serif);font-size:clamp(64px,9.2vw,122px);font-weight:500;line-height:.82;letter-spacing:-.062em;margin:0;max-width:9.4ch}
+.hero h1{font-family:var(--serif);font-size:clamp(64px,9.2vw,122px);font-weight:500;line-height:.82;letter-spacing:-.062em;margin:0;max-width:10.5ch}
 .hero h1 em{display:block;color:#b7a9ff;font-weight:400}
-.hero-dek{font-family:var(--serif);font-size:clamp(21px,2.6vw,32px);line-height:1.16;max-width:33ch;margin:38px 0 0;color:#e6e6df}
-.hero-rail{border-top:1px solid rgba(255,255,255,.35);padding-top:18px;align-self:end}
-.hero-rail .thesis{font-family:var(--serif);font-size:25px;line-height:1.18;margin:0 0 35px}
-.hero-rail .thesis strong{color:#b7a9ff;font-weight:500}
+.hero-dek{font-family:var(--serif);font-size:clamp(21px,2.6vw,32px);line-height:1.16;max-width:43ch;margin:38px 0 0;color:#e6e6df}
 
 .story-section{padding:96px 0;border-bottom:1px solid var(--line)}
 
 .section-signal{--signal:var(--orange);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:34px;align-items:end;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:18px 0 20px;margin:-10px 0 42px}
 .section-signal.signal-ta{--signal:var(--ta-bar)}
 .section-signal.signal-workforce{--signal:var(--workforce-bar)}
-.signal-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.signal-label{font-family:var(--mono);font-size:11.5px;line-height:1.35;letter-spacing:.075em;text-transform:uppercase;color:#4e534f;font-weight:600}
 .signal-copy{font-family:var(--serif);font-size:21px;line-height:1.25;margin:7px 0 0;max-width:44ch}
 .signal-value{font-family:var(--serif);font-size:clamp(52px,7vw,82px);font-weight:500;line-height:.78;letter-spacing:-.055em;color:var(--signal);white-space:nowrap}
 .metric-stat{margin-top:34px;border-top:1px solid var(--line);padding-top:18px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end}
-.metric-stat span,.metric-stat small{font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.metric-stat span,.metric-stat small{font-family:var(--mono);font-size:10.5px;line-height:1.35;letter-spacing:.065em;text-transform:uppercase;color:#4e534f;font-weight:500}
 .metric-stat span{display:block}.metric-stat small{grid-column:1/-1;margin-top:-10px}
 .metric-stat strong{font-family:var(--serif);font-size:64px;font-weight:500;line-height:.8;letter-spacing:-.05em;color:var(--orange)}
-.method-premise{border-top:2px solid var(--ink);border-bottom:1px solid var(--line);padding:26px 0 28px;margin:-8px 0 42px;display:grid;grid-template-columns:150px minmax(0,760px);gap:28px}
-.method-premise .premise-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding-top:5px}
-.method-premise blockquote{font-family:var(--serif);font-size:25px;line-height:1.25;margin:0}
-.method-premise blockquote strong{font-weight:500;color:var(--ta-bar)}
 
 .section-head{max-width:900px;margin-bottom:48px}
 .section-copy h2{font-family:var(--serif);font-weight:500;font-size:clamp(42px,5.5vw,70px);line-height:.93;letter-spacing:-.045em;margin:0}
 .section-copy p{font-family:var(--serif);font-size:21px;line-height:1.38;color:#343936;max-width:66ch;margin:22px 0 0}
+.section-copy p + p{margin-top:18px}
+.narrative-copy{max-width:900px;margin:40px 0 0}.narrative-copy p{font-family:var(--serif);font-size:21px;line-height:1.38;color:#343936;max-width:66ch;margin:0}.narrative-copy p + p{margin-top:18px}
+.transition-copy{max-width:800px;margin:38px 0 0;border-left:3px solid var(--ta-bar);padding-left:22px}.transition-copy p{font-family:var(--serif);font-size:25px;line-height:1.25;margin:0;color:var(--ink)}
+.methods-intro{max-width:900px;margin:0 0 54px}.methods-intro p{font-family:var(--serif);font-size:21px;line-height:1.38;color:#343936;max-width:66ch;margin:0}
 
 .table-shell{border-top:2px solid var(--ink);border-bottom:1px solid var(--ink)}
 .cohort-table{display:grid;grid-template-columns:1fr 1fr}
@@ -105,16 +101,8 @@ table{width:100%;border-collapse:collapse}th,td{padding:10px 4px;border-bottom:1
 .metric-note{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
 .metric-note b{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em}.metric-note p{margin:0;color:#3d423f;font-family:var(--serif);font-size:18px;line-height:1.34}
 
-.scatter-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(320px,.66fr);gap:24px;align-items:start}
-.detail-panel{background:var(--ink);color:var(--white);position:sticky;top:28px;min-height:520px}
-.explorer-controls{padding:20px 25px 21px;border-bottom:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.035)}
-.explorer-kicker{font-family:var(--mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#aeb5b1;margin-bottom:8px}
-.explorer-title{font-family:var(--serif);font-size:23px;line-height:1.1;margin:0 0 6px;font-weight:500}
-.explorer-instruction{font-family:var(--sans);font-size:11.5px;line-height:1.45;color:#aeb5b1;margin:0 0 15px}
-.company-select{width:100%;appearance:none;-webkit-appearance:none;background:#fffdf8;color:var(--ink);border:0;border-radius:0;padding:11px 40px 11px 12px;font-family:var(--mono);font-size:11px;font-weight:600;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,#555 50%),linear-gradient(135deg,#555 50%,transparent 50%);background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
-.company-select:focus-visible{outline:2px solid #b7a9ff;outline-offset:3px}
-.panel-content{padding:25px}
-.panel-context{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#d6cfff;margin:0 0 13px;min-height:1.35em}
+.scatter-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,.62fr);gap:24px;align-items:start}
+.detail-panel{background:var(--ink);color:var(--white);padding:25px;position:sticky;top:82px;min-height:470px}
 .panel-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:17px}.panel-company{font-family:var(--serif);font-size:35px;line-height:1}.panel-ticker{font-family:var(--mono);font-size:10px;color:#aeb5b1}.cluster-tag{display:inline-block;margin:16px 0 8px;padding:5px 8px;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.07em;border:1px solid currentColor}
 .detail-panel dl{display:grid;grid-template-columns:1fr auto;gap:9px 18px;font-size:12px;margin:17px 0 0}.detail-panel dt{color:#aeb5b1}.detail-panel dd{margin:0;font-family:var(--mono);text-align:right}.detail-panel .divider{grid-column:1/-1;height:1px;background:rgba(255,255,255,.15);margin:4px 0}.panel-note{font-family:var(--serif);font-size:18px;line-height:1.3;border-top:1px solid rgba(255,255,255,.2);padding-top:18px;margin-top:21px}.panel-source{font-family:var(--mono);font-size:8.5px;line-height:1.55;color:#8e9792;margin-top:18px}
 .dot{cursor:pointer;transition:r .15s ease,opacity .5s ease}.dot:hover{r:14}.dot.pre{opacity:0}.dot.selected{stroke:var(--ink)!important;stroke-width:4px}.axlabel,.dotlabel,.axtitle{font-family:var(--mono)}.axlabel{font-size:10px;fill:var(--muted)}.dotlabel{font-size:9px;fill:var(--ink);pointer-events:none}.axtitle{font-size:10px;fill:var(--ink);font-weight:600;letter-spacing:.04em}
@@ -127,10 +115,10 @@ table{width:100%;border-collapse:collapse}th,td{padding:10px 4px;border-bottom:1
 footer{background:var(--ink);color:var(--white);padding:48px 0}.footer-title{font-family:var(--serif);font-size:40px}
 
 @media(max-width:900px){
-  .hero-inner{grid-template-columns:1fr;min-height:auto;padding:70px 0}.hero-rail{max-width:620px}.cohort-table,.metric-layout,.scatter-layout,.methods-wrap{grid-template-columns:1fr}.table-block:first-child{border-right:0;border-bottom:1px solid var(--line);padding-right:0}.table-block:last-child{padding-left:0}.detail-panel{position:static;min-height:auto}.archetype-row{grid-template-columns:26px 1fr}.archetype-stat,.archetype-story{grid-column:2}.section-signal,.method-premise{grid-template-columns:1fr}.signal-value{justify-self:start}.caveats{border-left:0;border-top:1px solid var(--line);padding:28px 0 0}
+  .hero-inner{min-height:auto;padding:70px 0}.cohort-table,.metric-layout,.scatter-layout,.methods-wrap{grid-template-columns:1fr}.table-block:first-child{border-right:0;border-bottom:1px solid var(--line);padding-right:0}.table-block:last-child{padding-left:0}.detail-panel{position:static;min-height:auto}.archetype-row{grid-template-columns:26px 1fr}.archetype-stat,.archetype-story{grid-column:2}.section-signal{grid-template-columns:1fr}.signal-value{justify-self:start}.caveats{border-left:0;border-top:1px solid var(--line);padding:28px 0 0}
 }
 @media(max-width:560px){
-  .wrap{width:min(100% - 24px,var(--max))}.hero h1{font-size:62px}.hero-dek{font-size:22px}.story-section{padding:66px 0}.section-copy h2{font-size:46px}.table-block{padding-inline:0}.chart-frame{padding:10px;box-shadow:4px 4px 0 var(--paper-2)}.metric-note{grid-template-columns:1fr;gap:5px}.section-signal{gap:14px}.signal-copy{font-size:18px}.signal-value{font-size:56px}.method-premise blockquote{font-size:21px}.archetype-row{gap:12px}.footer-title{font-size:34px}
+  .wrap{width:min(100% - 24px,var(--max))}.hero h1{font-size:62px}.hero-dek{font-size:22px}.story-section{padding:66px 0}.section-copy h2{font-size:46px}.table-block{padding-inline:0}.chart-frame{padding:10px;box-shadow:4px 4px 0 var(--paper-2)}.metric-note{grid-template-columns:1fr;gap:5px}.section-signal{gap:14px}.signal-copy{font-size:18px}.signal-value{font-size:56px}.archetype-row{gap:12px}.footer-title{font-size:34px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dot{transition:none}.dot.pre{opacity:1}}
 </style>
@@ -663,9 +651,10 @@ footer{background:var(--ink);color:var(--white);padding:48px 0}.footer-title{fon
   <div class="wrap hero-inner">
     <div>
       <!-- EDITABLE PROSE: HERO TITLE AND SUBTITLE -->
-      <h1>Leaner… <em>and meaner?</em></h1>
-      <p class="hero-dek">How fourteen of the most important companies in the world changed recruiting—and redefined healthy growth.</p>
+      <h1>Leaner—<em>and Meaner?</em></h1>
+      <p class="hero-dek">Fourteen leading companies cut recruiting capacity far faster than they cut employment. Most kept growing. Their choices reveal six competing models of healthy growth.</p>
       <!-- END EDITABLE PROSE -->
+    </div>
   </div>
 </section>
 
@@ -673,8 +662,8 @@ footer{background:var(--ink);color:var(--white);padding:48px 0}.footer-title{fon
   <div class="wrap">
     <!-- EDITABLE PROSE: RECRUITING CAPACITY -->
     <div class="section-head"><div class="section-copy">
-      <h2>The recruiting boom ended. The machinery did not return.</h2>
-      <p>Corporate recruiting reached its post-pandemic high-water mark in 2022. Technology companies made the reversal visible, but the contraction was broader: by mid-2026, eleven of the fourteen companies in this sample employed fewer people in talent acquisition than they had four years earlier.</p>
+      <h2>The hiring machine was built for a world that ended.</h2>
+      <p>In the free-money years, workers quit at record rates, and those quitters needed to be backfilled. Growth was the metric markets paid for so companies industrialized their appetite, building recruiting functions of unprecedented scale. At the peak, Meta staffed one recruiter for every twenty employees. Then rates rose and the logic inverted. Capital became expensive, boards began rewarding discipline over expansion, and CEOs said the quiet part at full volume: fewer dollars would go to headcount, and the fat would be cut deliberately. Workers, for their part, stopped moving, out of caution, or because the doors were closing, or both; the honest answer is that nobody can fully separate the two. What's beyond dispute is where the knife fell first: on the people whose job was to add people. And, for all of the clamor around tech downsizing, our study of the “Magnificent Seven” versus a more established blue-chip cohort (our “Steady Seven”) reveals that the pain cut across sectors, even if it wasn’t distributed evenly.</p>
     </div></div>
     <!-- END EDITABLE PROSE -->
     <div class="section-signal signal-ta"><div><div class="signal-label">Median company · 2022 → 2026</div><p class="signal-copy">Talent-acquisition headcount contracted by almost one-quarter.</p></div><strong class="signal-value" id="stat-ta">—</strong></div>
@@ -689,14 +678,18 @@ footer{background:var(--ink);color:var(--white);padding:48px 0}.footer-title{fon
   <div class="wrap">
     <!-- EDITABLE PROSE: WORKFORCE DIVERGENCE -->
     <div class="section-head"><div class="section-copy">
-      <h2>Recruiting shrank faster than the companies it served.</h2>
-      <p>At twelve of the fourteen companies, total workforce was flat or larger by FY2025—even as TA contracted at most of them. The restructuring was therefore not simply a response to fewer employees. It was a management bet that less recruiting capacity could support the same institution.</p>
+      <h2>Growth continued. The hiring model changed.</h2>
+      <p>The cuts were surgical, not general. Companies weren't shrinking themselves; most in this sample held or grew total headcount even as they took recruiting down by a third or more. What they were exiting was a particular model of hiring: the standing army. That model kept thousands of full-time recruiters on payroll to fight for candidates in a seller's market — outbound sourcing, courtship, competing offers. When the market flipped, the expensive half of that work simply evaporated. With hundreds of qualified applicants arriving for every opening, most companies no longer needed to hunt. They needed a filter. So the new model keeps a thin permanent intake layer, pushes screening onto software and hiring managers to the extent possible, redeploys internally instead of buying externally, and treats recruiting capacity as something you rent back — through agencies and RPO — if demand ever returns. It helped that the recruiter was the safest possible cut: eliminating one touches no product, no customer, and no revenue; it only reduces the company's capacity to grow later. In 2023, later was a problem for later.</p>
+      <p>The two exceptions prove the mechanism. Nvidia and Caterpillar — the sample's fastest capital compounders — added recruiters, because their constraint was never demand for jobs but supply of scarce people. When you're still hunting, you keep the hunting party.</p>
     </div></div>
     <!-- END EDITABLE PROSE -->
     <div class="section-signal signal-workforce"><div><div class="signal-label">Median company · FY2022 → FY2025</div><p class="signal-copy">The workforce became slightly larger, not smaller.</p></div><strong class="signal-value" id="stat-wf">—</strong></div>
     <div class="chart-frame"><svg id="bars" viewBox="0 0 640 600" role="img" aria-label="Talent-acquisition change compared with workforce change"></svg>
       <div class="legend"><span class="legend-item"><span class="swatch" style="background:var(--ta-bar)"></span>TA headcount</span><span class="legend-item"><span class="swatch" style="background:var(--workforce-bar)"></span>Total workforce</span><span>Sorted by depth of TA cut</span></div>
     </div>
+    <!-- EDITABLE PROSE: TRANSITION TO PRODUCTIVITY -->
+    <div class="transition-copy"><p>Now, a few years later, the question is still begging to be answered: could these companies who promised to do more with less actually do it?</p></div>
+    <!-- END EDITABLE PROSE -->
   </div>
 </section>
 
@@ -704,8 +697,8 @@ footer{background:var(--ink);color:var(--white);padding:48px 0}.footer-title{fon
   <div class="wrap">
     <!-- EDITABLE PROSE: GROSS PROFIT MEASURE -->
     <div class="section-head"><div class="section-copy">
-      <h2>A measure of output—not an HR score.</h2>
-      <p>To compare companies with radically different economics, this analysis uses gross profit per employee. It is a cleaner cross-company lens than revenue per employee, while still requiring care: pricing, mix, margins, and capital intensity can all move the result.</p>
+      <h2>A positive signal, not a victory lap.</h2>
+      <p>Everything so far describes what companies did. This is where we ask whether it worked, or at least, whether it worked on the terms the companies themselves set. “Do more with less” was the promise, offered loudly and often. Gross profit per employee is the closest thing to a scoreboard for that promise: how much value the business generates, after direct costs, per person employed to generate it. The answer, at the median company in this sample: up meaningfully, and up most where the cuts went deepest. The companies that took recruiting down by half or more posted productivity gains several times larger than the companies that barely touched it.</p>
     </div></div>
     <!-- END EDITABLE PROSE -->
     <div class="metric-layout">
@@ -714,48 +707,48 @@ footer{background:var(--ink);color:var(--white);padding:48px 0}.footer-title{fon
       </div>
       <!-- EDITABLE PROSE: METRIC EXPLANATION -->
       <div class="metric-notes">
-        <div class="metric-note"><b>Why not revenue?</b><p>A dollar of software and a dollar of retail resale do not carry the same economics. Gross profit strips out more of that structural difference.</p></div>
-        <div class="metric-note"><b>What it reveals</b><p>How much value remains after direct costs, relative to the size of the workforce supporting the business.</p></div>
-        <div class="metric-note"><b>What it cannot prove</b><p>It measures a business outcome, not isolated labor quality. Pricing, product mix, and margins can move the number without anyone becoming more effective.</p></div>
+        <div class="metric-note"><b>Gross profit</b><p>Revenue after the direct cost of producing or delivering what a company sells. It gives software, retail, media, and industrial businesses a more comparable economic baseline than revenue alone.</p></div>
+        <div class="metric-note"><b>Per employee</b><p>Dividing by total workforce asks how much gross profit the business supports for every person on the payroll.</p></div>
+        <div class="metric-note"><b>What it cannot prove</b><p>It is a scoreboard for the business, not for labor decisions alone. Pricing, product mix, margins, and capital intensity can all move it.</p></div>
         <div class="metric-note"><b>Bank exception</b><p>JPMorgan is shown on net revenue per employee because banks do not report a comparable cost-of-revenue line.</p></div>
       </div>
       <!-- END EDITABLE PROSE -->
     </div>
+    <!-- EDITABLE PROSE: PRODUCTIVITY CAVEAT -->
+    <div class="narrative-copy"><p>Read that carefully before celebrating, because the number is a scoreboard for the business, not for the labor decisions alone. Pricing moved these figures. Product mix moved them. An AI boom moved some of them enormously. And the companies that cut hardest were often cutting from 2022's depressed base, which flatters their rebound. What the data supports is narrower and more interesting than triumph: the companies that suppressed their appetite for headcount got leaner and healthier on paper, in the same window. Whether the leanness caused the health, rode along with it, or merely signaled a confidence that was already there — that's the question the six patterns below let you examine case by case.</p></div>
+    <!-- END EDITABLE PROSE -->
   </div>
 </section>
 
 <section class="story-section" id="types">
   <div class="wrap">
-    <!-- EDITABLE PROSE: GROWTH MODELS -->
+    <!-- EDITABLE PROSE: GROWTH MODELS HEADLINE -->
     <div class="section-head"><div class="section-copy">
-      <h2>Six answers to one question: what does healthy growth require?</h2>
-      <p>Once recruiting capacity, workforce movement, and unit economics are viewed together, the two headline cohorts dissolve into six operating models. These are not rankings. Each reflects a different view of where growth capacity should sit, which constraint matters most, and what risk management is willing to carry.</p>
+      <h2>Six models, six tradeoffs, no universal prescription.</h2>
     </div></div>
     <!-- END EDITABLE PROSE -->
     <div class="scatter-layout">
-      <div class="chart-frame"><svg id="scatter" viewBox="0 0 640 520" role="img" aria-label="Talent-acquisition change versus gross profit per employee change"></svg><div class="legend" id="cluster-legend"></div><div class="axis-note">Nvidia (+523%) is pinned to the top edge. Select a dot or use the company explorer.</div></div>
-      <aside class="detail-panel" aria-label="Company explorer">
-        <div class="explorer-controls">
-          <div class="explorer-kicker">Company explorer</div>
-          <h3 class="explorer-title">See the underlying company story.</h3>
-          <p class="explorer-instruction">Choose any of the fourteen companies, or select its dot on the chart.</p>
-          <label class="visually-hidden" for="company-select">Select a company</label>
-          <select class="company-select" id="company-select"></select>
-        </div>
-        <div class="panel-content" id="panel" aria-live="polite"></div>
-      </aside>
+      <div class="chart-frame"><svg id="scatter" viewBox="0 0 640 520" role="img" aria-label="Talent-acquisition change versus gross profit per employee change"></svg><div class="legend" id="cluster-legend"></div><div class="axis-note">Nvidia (+523%) is pinned to the top edge. Select any company for the underlying arithmetic.</div></div>
+      <aside class="detail-panel" id="panel" aria-live="polite"></aside>
     </div>
+    <!-- EDITABLE PROSE: GROWTH MODELS INTRODUCTION -->
+    <div class="narrative-copy"><p>Sort these fourteen companies by what they did rather than what they are, and the familiar taxonomy dissolves. The tech-versus-incumbent line, the one every 2023 headline was organized around, turns out to explain almost nothing: Disney cut deeper than Microsoft, Walmart matched it, and the two companies still adding recruiters are an AI lab and a bulldozer manufacturer. What emerges instead are six distinct answers to the same question every board was quietly asking: how much capacity to grow are we willing to pay for while we wait to find out if we'll need it? Each answer is a real strategy with a real bill tradeoff, some payable now, some deferred. None of them is a verdict, because the experiment isn't over. What follows is each pattern, its logic, its cost, and the question it leaves open.</p></div>
+    <!-- END EDITABLE PROSE -->
     <div class="archetype-list" id="archetypes"></div>
+    <!-- EDITABLE PROSE: ARCHETYPE CONCLUSION -->
+    <div class="narrative-copy">
+      <p>Every archetype on this page is an open bet. The Hard Reset is betting that hiring muscle can regrow faster than it atrophied. The Lean Growth Engine is betting that today's conditions — torrential inbound, docile and mostly wanted attrition, enhanced tech solutions — are the new physics rather than a weather cycle. The Rebalancers are betting they cut fat and not reach; the Steady-State Operators, that continuity beats reconstruction; the Capacity Builders, that scarce talent is worth carrying capacity for before the demand is confirmed.</p>
+      <p>What settles these bets is the thaw. A frozen market flatters every lean model: scarce openings and anxious workers mean candidates arrive in torrents, and filtering a torrent is cheap. It was generating candidates in a candidate-obsessed market that justified the standing army. The day attrition normalizes and the inbound torrent thins, we find out which companies cut a bloated function and which ones sold the plumbing. And that points at the question this study can pose but not answer: did the freeze make recruiting organizations redundant, or merely make them look redundant? The honest reading of fourteen companies is that nobody knows yet — including, one suspects, the companies themselves.</p>
+    </div>
+    <!-- END EDITABLE PROSE -->
   </div>
 </section>
 
 <section class="story-section" id="methods">
   <div class="wrap">
-    <!-- EDITABLE PROSE: METHODS -->
-    <div class="section-head"><div class="section-copy"><h2>How the people who hire people were counted.</h2></div></div>
-    <!-- END EDITABLE PROSE -->
-    <!-- EDITABLE PROSE: METHODS PREMISE -->
-    <div class="method-premise"><div class="premise-label">Why TA is worth measuring</div><blockquote><strong>“The TA org chart is a confession.”</strong> A recruiting organization is a forward commitment: a bet on next year’s hiring demand, paid for with this year’s payroll. That is why this analysis treats recruiting capacity as an operating signal, not merely an HR cost.</blockquote></div>
+    <!-- EDITABLE PROSE: METHODS INTRODUCTION -->
+    <div class="methods-intro"><p>In the meantime, the data suggests a different use for these numbers than judgment. A recruiting organization is the one line item that encodes what a company believes about its own future: its size is a confession of expected growth, its composition a statement of which constraint — demand or talent — management actually fears. So one is wise to watch a TA org chart the way you'd watch insider buying: not because it's always right, but because it's what they do with their own money when they think the analysts aren't looking.</p></div>
+    <div class="section-head"><div class="section-copy"><h2>What the data can—and cannot—tell us.</h2></div></div>
     <!-- END EDITABLE PROSE -->
     <div class="methods-wrap">
       <!-- EDITABLE PROSE: METHODS DETAILS -->
@@ -891,35 +884,16 @@ footer{background:var(--ink);color:var(--white);padding:48px 0}.footer-title{fon
   document.getElementById('cluster-legend').innerHTML=clusters.map(c=>`<span class="legend-item"><span class="swatch" style="background:${c.color}"></span>${c.name}</span>`).join('');
 
   const panel=document.getElementById('panel');
-  const companySelect=document.getElementById('company-select');
-  const cohortLabels={mag7:'Magnificent Seven',old7:'Steady Seven'};
-  ['mag7','old7'].forEach(cohort=>{
-    const group=document.createElement('optgroup');
-    group.label=cohortLabels[cohort];
-    companies.filter(c=>c.cohort===cohort).sort((a,b)=>a.name.localeCompare(b.name)).forEach(c=>{
-      const option=document.createElement('option');
-      option.value=c.ticker;
-      option.textContent=`${c.name} (${c.ticker})`;
-      group.appendChild(option);
-    });
-    companySelect.appendChild(group);
-  });
-  companySelect.addEventListener('change',event=>selectCompany(event.target.value));
-
   function selectCompany(ticker) {
     const c=companies.find(x=>x.ticker===ticker), cl=clusterById[c.cluster];
-    if(!c)return;
-    Object.values(dots).forEach(d=>d.classList.remove('selected'));
-    dots[ticker].classList.add('selected');
-    companySelect.value=ticker;
+    Object.values(dots).forEach(d=>d.classList.remove('selected')); dots[ticker].classList.add('selected');
     const gpLabel=c.gpBasis==='netRevenue'?'Net revenue / employee':'Gross profit / employee';
-    const context=c.ticker==='META'?'Deepest TA contraction in the sample':'';
     let incremental='';
     if(c.d.incremental!==null) {
       const label=c.d.incrementalKind==='added'?'GP per employee added':c.d.incrementalKind==='grewWhileCutting'?'GP preserved per role cut':'GP lost per role cut';
       incremental=`<dt>${label}</dt><dd>${fmtUSD(Math.abs(c.d.incremental))}</dd>`;
     }
-    panel.innerHTML=`<div class="panel-context">${context}</div><div class="panel-head"><span class="panel-company">${c.name}</span><span class="panel-ticker">${c.ticker}</span></div><span class="cluster-tag" style="color:${cl.color}">${cl.name}</span><dl><dt>TA ’22 → ’26</dt><dd>${fmtN(c.taHeadcount.y2022)} → ${fmtN(c.taHeadcount.now)}</dd><dt>Δ TA</dt><dd>${fmtPct(c.d.taChange)}</dd><div class="divider"></div><dt>Workforce FY22 → FY25</dt><dd>${fmtN(c.workforce.fy2022)} → ${fmtN(c.workforce.fy2025)}</dd><dt>Δ workforce</dt><dd>${fmtPct(c.d.wfChange)}</dd><dt>Employees / recruiter</dt><dd>${fmtN(Math.round(c.workforce.fy2022/c.taHeadcount.y2022))} → ${fmtN(Math.round(c.workforce.fy2025/c.taHeadcount.now))}</dd><div class="divider"></div><dt>${gpLabel} FY22</dt><dd>${fmtUSD(c.d.gpe0)}</dd><dt>${gpLabel} FY25</dt><dd>${fmtUSD(c.d.gpe1)}</dd><dt>Δ GP / employee</dt><dd>${fmtPct(c.d.gpeChange)}</dd>${incremental}</dl><div class="panel-note">${c.note}</div><div class="panel-source">${c.taSource}. Financials: 10-K, FY22/FY25.${c.gpBasis==='netRevenue'?' Net-revenue basis.':''}</div>`;
+    panel.innerHTML=`<div class="panel-head"><span class="panel-company">${c.name}</span><span class="panel-ticker">${c.ticker}</span></div><span class="cluster-tag" style="color:${cl.color}">${cl.name}</span><dl><dt>TA ’22 → ’26</dt><dd>${fmtN(c.taHeadcount.y2022)} → ${fmtN(c.taHeadcount.now)}</dd><dt>Δ TA</dt><dd>${fmtPct(c.d.taChange)}</dd><div class="divider"></div><dt>Workforce FY22 → FY25</dt><dd>${fmtN(c.workforce.fy2022)} → ${fmtN(c.workforce.fy2025)}</dd><dt>Δ workforce</dt><dd>${fmtPct(c.d.wfChange)}</dd><dt>Employees / recruiter</dt><dd>${fmtN(Math.round(c.workforce.fy2022/c.taHeadcount.y2022))} → ${fmtN(Math.round(c.workforce.fy2025/c.taHeadcount.now))}</dd><div class="divider"></div><dt>${gpLabel} FY22</dt><dd>${fmtUSD(c.d.gpe0)}</dd><dt>${gpLabel} FY25</dt><dd>${fmtUSD(c.d.gpe1)}</dd><dt>Δ GP / employee</dt><dd>${fmtPct(c.d.gpeChange)}</dd>${incremental}</dl><div class="panel-note">${c.note}</div><div class="panel-source">${c.taSource}. Financials: 10-K, FY22/FY25.${c.gpBasis==='netRevenue'?' Net-revenue basis.':''}</div>`;
   }
   selectCompany('META');
 
