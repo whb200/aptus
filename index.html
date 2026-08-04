@@ -60,14 +60,6 @@
   }
   .brand strong { font-weight: 650; }
   .brand span { font-weight: 300; }
-  nav { display: flex; gap: 28px; }
-  nav a {
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-  }
-  nav a:hover { color: var(--blue); }
 
   .hero { padding: 100px 0 104px; }
   .hero-grid {
@@ -193,7 +185,6 @@
   a:focus-visible { outline: 2px solid var(--lavender); outline-offset: 4px; }
 
   @media (max-width: 820px) {
-    nav { display: none; }
     .hero { padding: 70px 0 76px; }
     .hero-grid, .contact-grid { grid-template-columns: 1fr; }
     .hero-grid { gap: 44px; }
@@ -227,12 +218,6 @@
     <span class="brand-mark" aria-hidden="true"></span>
     <span><strong>Aptus</strong><span>Research</span></span>
   </a>
-  <nav aria-label="Primary navigation">
-    <a href="#about">About</a>
-    <a href="#method">Method</a>
-    <a href="#work">Current work</a>
-    <a href="#contact">Correspondence</a>
-  </nav>
 </header>
 
 <main id="top">
